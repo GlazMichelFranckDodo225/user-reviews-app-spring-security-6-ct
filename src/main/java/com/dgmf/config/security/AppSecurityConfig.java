@@ -19,12 +19,11 @@ public class AppSecurityConfig {
         // httpSecurity.csrf(csrf -> csrf.disable())
         httpSecurity.csrf(AbstractHttpConfigurer::disable) // Returns the
                 // HttpSecurityBuilder for additional customizations
-                .authorizeHttpRequests(
-                    authorize ->
-                            authorize
-                                    .requestMatchers(POST,"/registration")
-                                    .permitAll()
-                                    .anyRequest().authenticated()
+                .authorizeHttpRequests(authorize ->
+                    authorize
+                        .requestMatchers(POST,"/api/v1/users/registration")
+                        .permitAll()
+                        .anyRequest().authenticated()
                 );
 
         return httpSecurity.build();
